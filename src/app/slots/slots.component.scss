@@ -1,0 +1,50 @@
+.selected {
+    background-color: #CFD8DC !important;
+    color: white;
+  }
+  .slots {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+  }
+  .slots a {
+    color: #888;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
+   
+  .slots a:hover {
+    color:#607D8B;
+  }
+  .slots li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
+  }
+  .slots li.selected:hover {
+    background-color: #BBD8DC !important;
+    color: white;
+  }
+.full-width-table {
+  width: 100%;
+}
+.mat-header-cell,
+.mat-sort-header {
+  background-color: #24519b;
+  color: white;
+}
+.mat-row:nth-child(even) {
+  background-color: #f2f4f4;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: white;
+}

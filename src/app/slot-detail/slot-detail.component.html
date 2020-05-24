@@ -1,0 +1,29 @@
+<div *ngIf="slot" fxLayout="column" class="application-card">
+    <div fxLayout="row">
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">Tid</div>
+        <div fxFlex fxLayoutAlign="end">{{ slot.name}}</div>
+    </div>
+    <div *ngIf="slot.weekNo" fxLayout="row">
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">Uge</div>
+        <div fxFlex fxLayoutAlign="end">{{ slot.weekNo | date: 'mediumDate'}}</div>
+    </div>
+    <div *ngIf="slot" fxLayout="row">
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">{{ slot.location }}</div>
+    </div>
+    <div *ngIf="slot.perticipants[0]" fxLayout="row">
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">Vagt</div>
+        <div fxFlex fxLayoutAlign="end"><input [(ngModel)]="slot.perticipants[0]" placeholder="name" /></div>
+    </div>
+    <div>
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">Vagt</div>
+        <div fxFlex fxLayoutAlign="end"><input [(ngModel)]="slot.perticipants[1]" placeholder="name" /></div>
+    </div>
+    <div>
+        <div fxFlex="none" class="caption" fxLayoutGap="6px">group</div>
+        <div fxFlex fxLayoutAlign="end"><input [(ngModel)]="slot.group" placeholder="name" /></div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-stroked-button (click)="goBack()">Back</button>
+        <button mat-stroked-button (click)="save()">save</button>
+    </div>
+</div>
