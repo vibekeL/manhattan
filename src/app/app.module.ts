@@ -12,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SlotService } from './slot.service';
 import { MessageService } from './messages.service';
 import { SharedModule } from './shared/shared.module';
-import { TestTableComponent } from './test-table/test-table.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
@@ -21,7 +20,6 @@ import { InMemoryDataService } from './in-memory-data.service';
     AppComponent,
     SlotsComponent,
     SlotDetailComponent,
-    TestTableComponent,
     MessagesComponent,
   ],
   imports: [
