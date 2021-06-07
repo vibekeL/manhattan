@@ -22,6 +22,23 @@ export class SlotDetailComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+ confirmDialog(action: string) {
+    const dialogData = new ConfirmDialogModel(action, `CONFIRM_TITLE`);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      maxWidth: '300px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult && this.activeTierForm.valid) {
+        this.editing = dialogResult;
+        const newTier: TierChangeManually = this.activeTierForm.getRawValue();
+        this.activeTierServiceService
+          .saveTier(this.country, this.customer.customerId, newTier)
+          .subscribe(() => this.getActiveTier());
+      }
+    });
+  }
 
   save(): void {
     this.slotService.updateHero(this.slot).subscribe(() => this.goBack());
