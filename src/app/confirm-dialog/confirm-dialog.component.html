@@ -1,14 +1,14 @@
 <div fxLayout="column">
   <h1 mat-dialog-title>
-    {{title| translate}}
+    {{title}}
   </h1>
 
   <div mat-dialog-content>
-    <p>{{message|translate}}</p>
+    <p>{{message}}</p>
   </div>
 
   <div mat-dialog-actions>
-    <button mat-button (click)="onDismiss()">{{'SHARED.NO'| translate}}</button>
-    <button mat-stroked-button (click)="onConfirm()">{{'SHARED.YES'| translate}}</button>
+    <button mat-button (click)="onDismiss()">No</button>
+    <button mat-stroked-button (click)="onConfirm()">Yes</button>
   </div>
 </div>

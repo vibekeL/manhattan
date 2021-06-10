@@ -14,6 +14,7 @@ import { MessageService } from './messages.service';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
+import { ConfirmDialogComponent } from './confirm-dialog';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { InMemoryDataService } from './in-memory-data.service';
     SlotsComponent,
     SlotDetailComponent,
     MessagesComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -32,14 +34,11 @@ import { InMemoryDataService } from './in-memory-data.service';
 
     HttpClientModule,
 
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
       dataEncapsulation: false,
     }),
   ],
   providers: [SlotService, MessageService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

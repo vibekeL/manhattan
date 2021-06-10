@@ -3,6 +3,9 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { SlotService } from '../slot.service';
 import { Slot } from '../slot.model';
+import { ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.model';
+import { ConfirmDialogComponent } from '../confirm-dialog';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-slot-detail',
   templateUrl: './slot-detail.component.html',
@@ -10,11 +13,13 @@ import { Slot } from '../slot.model';
 })
 export class SlotDetailComponent implements OnInit {
   @Input() slot: Slot;
+  editing: any;
 
   constructor(
     private route: ActivatedRoute,
     private slotService: SlotService,
-    private location: Location
+    private location: Location,
+    public dialog: MatDialog
   ) {}
   ngOnInit() {
     this.getSlot();
@@ -23,19 +28,17 @@ export class SlotDetailComponent implements OnInit {
     this.location.back();
   }
  confirmDialog(action: string) {
-    const dialogData = new ConfirmDialogModel(action, `CONFIRM_TITLE`);
+   console.log('in confirmDialog()', action)
+    const dialogData = new ConfirmDialogModel(action, 'Warning');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '300px',
       data: dialogData
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult && this.activeTierForm.valid) {
+      if (dialogResult ) {
         this.editing = dialogResult;
-        const newTier: TierChangeManually = this.activeTierForm.getRawValue();
-        this.activeTierServiceService
-          .saveTier(this.country, this.customer.customerId, newTier)
-          .subscribe(() => this.getActiveTier());
+        this.save();
       }
     });
   }
