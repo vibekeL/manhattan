@@ -11,7 +11,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { of } from 'rxjs';
@@ -34,12 +33,6 @@ describe('ConfirmDialogComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ConfirmDialogComponent],
       imports: [
-        TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useClass: TranslateFakeLoader
-          }
-        }),
         MatIconModule,
         MatButtonModule,
         MatSelectModule,

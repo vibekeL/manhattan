@@ -11,7 +11,10 @@ import { MatTable } from '@angular/material/table';
 import { MatTableDataSource } from '@angular/material/table';
 import { Slot } from '../slot.model';
 import { SlotService } from '../slot.service';
-import { MatSelect, MatSelectChange } from '@angular/material/select';
+import { MatSelectChange } from '@angular/material/select';
+import { ConfirmDialogComponent } from '../confirm-dialog';
+import { ConfirmDialogModel } from '../confirm-dialog/confirm-dialog.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-slots',
@@ -29,11 +32,27 @@ export class SlotsComponent implements AfterViewInit, OnInit {
   displayedColumns = ['id', 'name', 'location', 'group'];
   slots: Slot[];
   selectedValue: string;
-  constructor(private slotService: SlotService) {}
+  constructor(private slotService: SlotService, public dialog: MatDialog) {}
   ngOnInit() {
     this.getSlots();
   }
+ confirmDialog(action: string) {
+    const dialogData = new ConfirmDialogModel(action, 'Close again');
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+       position: { right: "0", top: "0" },
+      height: "100%",
+      width: "185px",
+      hasBackdrop: false,
+      panelClass: ["animate__animated", "animate__bounceInRight"],
+      data: dialogData
+    });
 
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult ) {
+       // do stuff
+      }
+    });
+  }
   getSlots(): void {
     this.slotService.getSlots().subscribe((slots: Slot[]) => {
       this.dataSource.data = slots;

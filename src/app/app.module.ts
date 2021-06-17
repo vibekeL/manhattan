@@ -15,6 +15,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { ConfirmDialogComponent } from './confirm-dialog';
+import { Test1Component } from './test1/test1.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfirmDialogComponent } from './confirm-dialog';
     SlotsComponent,
     SlotDetailComponent,
     MessagesComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    Test1Component
   ],
   imports: [
     BrowserModule,

@@ -44,7 +44,7 @@ export class SlotDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.slotService.updateHero(this.slot).subscribe(() => this.goBack());
+    this.slotService.updateSlot(this.slot).subscribe(() => this.goBack());
   }
   getSlot(): void {
     const id = +this.route.snapshot.paramMap.get('id');

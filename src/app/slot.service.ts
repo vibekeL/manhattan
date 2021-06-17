@@ -26,10 +26,10 @@ export class SlotService {
   }
 
 
-  updateHero(slot: Slot): Observable<any> {
+  updateSlot(slot: Slot): Observable<any> {
     return this.http.put(this.slotsUrl, slot, httpOptions).pipe(
       tap((_) => this.log(`updated slot id=${slot.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+      catchError(this.handleError<any>('updateSlot'))
     );
   }
 

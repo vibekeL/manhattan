@@ -12,6 +12,7 @@
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
     </mat-form-field>
+    <button mat-button (click)="confirmDialog('Do you?')">Open dialog</button>
     <table mat-table class="full-width-table" matSort aria-label="Elements">
         <!-- Id Column -->
         <ng-container matColumnDef="id">
