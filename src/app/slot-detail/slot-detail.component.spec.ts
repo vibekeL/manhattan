@@ -14,31 +14,34 @@ import { SlotDetailComponent } from './slot-detail.component';
 describe('SlotDetailComponent', () => {
   let component: SlotDetailComponent;
   let fixture: ComponentFixture<SlotDetailComponent>;
- let dialog: MatDialog;
   const mockMatDialog = {
     open: (comp: any) => ({
-      subscribe: () => ({})
+      subscribe: () => ({}),
     }),
-    afterClosed: () => of(true)
+    afterClosed: () => of(true),
   };
   const dialogMock = {
-    close: () => {}
+    close: () => {},
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SlotDetailComponent ],
-      imports: [RouterTestingModule.withRoutes([]), HttpClientTestingModule, 
+      declarations: [SlotDetailComponent],
+      imports: [
+        RouterTestingModule.withRoutes([]),
+        HttpClientTestingModule,
         MatButtonModule,
         MatInputModule,
         MatDialogModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
       ],
       providers: [
         { provide: MatDialog, useValue: mockMatDialog },
         { provide: MatDialogRef, useValue: dialogMock },
-        { provide: MAT_DIALOG_DATA, useValue: [] }, SlotService, MessageService]
-    })
-    .compileComponents();
+        { provide: MAT_DIALOG_DATA, useValue: [] },
+        SlotService,
+        MessageService,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

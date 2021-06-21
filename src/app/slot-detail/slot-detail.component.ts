@@ -13,31 +13,27 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class SlotDetailComponent implements OnInit {
   @Input() slot: Slot;
-  editing: any;
-
   constructor(
     private route: ActivatedRoute,
     private slotService: SlotService,
     private location: Location,
     public dialog: MatDialog
-  ) {}
+  ) { }
   ngOnInit() {
     this.getSlot();
   }
   goBack(): void {
     this.location.back();
   }
- confirmDialog(action: string) {
-   console.log('in confirmDialog()', action)
-    const dialogData = new ConfirmDialogModel(action, 'Warning');
+  confirmDialog(action: string) {
+    const dialogData = new ConfirmDialogModel(action, 'Warning: you are doing a serious thing!');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: '300px',
-      data: dialogData
+      maxWidth: '200px',
+      data: dialogData,
     });
 
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult ) {
-        this.editing = dialogResult;
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
         this.save();
       }
     });

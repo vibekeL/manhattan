@@ -1,27 +1,18 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { HttpClientTestingModule } from "@angular/common/http/testing";
-import { SlotsComponent } from "./slots.component";
-import { SlotService } from "../slot.service";
-import {
-  MatDialog,
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
-import { of } from "rxjs";
-import { MatPaginator } from "@angular/material/paginator";
-import { MatSort } from "@angular/material/sort";
-import { MatTable, MatTableModule } from "@angular/material/table";
-import { MatTableDataSource } from "@angular/material/table";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MessageService } from "../messages.service";
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { SlotsComponent } from './slots.component';
+import { SlotService } from '../slot.service';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { of } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageService } from '../messages.service';
 
-describe("SlotsComponent", () => {
+describe('SlotsComponent', () => {
   let component: SlotsComponent;
   let fixture: ComponentFixture<SlotsComponent>;
-  let dialog: MatDialog;
   const mockMatDialog = {
     open: (comp: any) => ({
       subscribe: () => ({}),
@@ -57,7 +48,7 @@ describe("SlotsComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should be created", () => {
+  it('should be created', () => {
     expect(component).toBeTruthy();
   });
 });

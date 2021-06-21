@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -28,7 +22,6 @@ export class SlotsComponent implements AfterViewInit, OnInit {
 
   dataSource = new MatTableDataSource<Slot>();
   versions = ['Kgs.', 'Dronning L'];
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'location', 'group'];
   slots: Slot[];
   selectedValue: string;
@@ -36,22 +29,26 @@ export class SlotsComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.getSlots();
   }
- confirmDialog(action: string) {
-    const dialogData = new ConfirmDialogModel(action, 'Close again');
+  confirmDialog(action: string) {
+    const dialogData = new ConfirmDialogModel(action, 'Do stuff or press no to close again ?');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-       position: { right: "0", top: "0" },
-      height: "100%",
-      width: "185px",
+      position: { right: '0', top: '0' },
+      height: '100%',
+      width: '185px',
       hasBackdrop: false,
-      panelClass: ["animate__animated", "animate__bounceInRight"],
-      data: dialogData
+      panelClass: ['animate__animated', 'animate__bounceInRight'],
+      data: dialogData,
     });
 
-    dialogRef.afterClosed().subscribe(dialogResult => {
-      if (dialogResult ) {
-       // do stuff
+    dialogRef.afterClosed().subscribe((dialogResult) => {
+      if (dialogResult) {
+        this.doStuff(dialogResult);
       }
     });
+  }
+  doStuff(dialogResult: any) {
+    // TODO pupose console.log() tos see result should be remove for prod
+    console.log('do Stuff result was: ', dialogResult);
   }
   getSlots(): void {
     this.slotService.getSlots().subscribe((slots: Slot[]) => {

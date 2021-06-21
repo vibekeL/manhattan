@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialogModel } from './confirm-dialog.model';
 
 @Component({
-  selector: 'fp-confirm-dialog',
+  selector: 'app-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,13 +20,16 @@ export class ConfirmDialogComponent implements OnInit {
     this.message = data.message;
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onConfirm(): void {
+    // TODO pupose console.log() tos see result should be remove for prod
+    console.log('Dialog result afterOpened confirmed');
     this.dialogRef.close(true);
   }
 
   onDismiss(): void {
+    console.log('Dialog result afterOpened dismissed');
     this.dialogRef.close(false);
   }
 }
